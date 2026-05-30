@@ -96,6 +96,14 @@
     }
     .hero-text img { width: 100%; max-width: 300px; }
 
+    /* Hero 下端の波形 */
+    .hero-wave {
+      position: absolute; bottom: -2px; left: 0; width: 100%;
+      line-height: 0; z-index: 2;
+    }
+    .hero-wave svg { display: block; width: 100%; height: 60px; }
+    @media (max-width: 768px) { .hero-wave svg { height: 36px; } }
+
     /* Section base */
     section { padding: 56px 20px; }
     .section-inner { max-width: 1000px; margin: 0 auto; }
@@ -317,6 +325,12 @@
     <div class="hero-text">
       <img src="images/tegakimoji.png" alt="ふわふわ、しあわせ。やさしい素材でつくるこだわりのシフォンケーキ" />
     </div>
+    <!-- 下端の波形 背景色はAboutセクション(#FFFDF5)に合わせる -->
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#FFFDF5"/>
+      </svg>
+    </div>
   </section>
 
   <!-- About -->
@@ -447,7 +461,7 @@
       <div class="shop-inner">
         <div class="shop-img-wrap">
           <img src="images/shop.png" alt="おかしの家クレール 外観" />
-          <a href="https://maps.google.com/" target="_blank" rel="noopener" class="btn-map">
+          <a href="https://maps.google.com/?q=東京駅" target="_blank" rel="noopener" class="btn-map">
             &#128205; Google&#12510;&#12483;&#12503;&#12391;&#35211;&#12427;
           </a>
         </div>
