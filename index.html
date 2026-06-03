@@ -96,11 +96,13 @@
       max-height: 640px;
       overflow: hidden;
       background: #F5E8D8;
+      padding: 0;
     }
     .hero-bg {
       width: 100%; height: 100%;
       object-fit: cover; object-position: center top;
       position: absolute; inset: 0;
+      margin: 0;
     }
     .hero-overlay {
       position: absolute; inset: 0;
@@ -189,22 +191,13 @@
       background: #FFF9EE;
       padding: 52px 20px;
     }
-    .kodawari-grid {
-      display: flex; justify-content: center; gap: 40px;
-      flex-wrap: wrap; margin-top: 0;
+    .kodawari-img-wrap {
+      display: flex; justify-content: center; margin-top: 0;
     }
-    .kodawari-card {
-      display: flex; flex-direction: column; align-items: center; gap: 12px;
-      width: 160px; text-align: center;
-    }
-    .kodawari-icon {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: #FFF8E7; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 3px 10px rgba(123,79,46,0.13);
-    }
-    .kodawari-icon img { width: 38px; height: 38px; object-fit: contain; }
-    .kodawari-label {
-      font-size: 0.88rem; font-weight: 700; color: var(--brown-dark); line-height: 1.5;
+    .kodawari-img {
+      width: 100%; max-width: 720px; border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 4px 18px rgba(123,79,46,0.15);
     }
 
     /* ========== MENU ========== */
@@ -410,9 +403,16 @@
     @media (max-width: 768px) {
       nav { display: none; }
       .hamburger { display: flex; }
-      .hero { min-height: 62vw; max-height: 460px; }
-      .hero-content { min-height: 62vw; max-height: 460px; padding: 28px 20px; }
-      .hero-text-wrap { max-width: 230px; }
+      /* ヒーロー: absolute背景＋コンテンツで高さを決定 */
+      .hero { min-height: 280px; max-height: unset; height: auto; overflow: hidden; }
+      .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; margin: 0; }
+      .hero-content { position: relative; z-index: 4; min-height: 280px; max-height: unset; padding: 18px 20px 68px; align-items: flex-start; }
+      .hero-text-wrap { max-width: 200px; }
+      .hero-btn { padding: 5px 11px; font-size: 0.47rem; gap: 3px; margin-top: 14px; }
+      /* Aboutセクション文字縮小 */
+      .section-title { font-size: 1.05rem; gap: 8px; }
+      .about-text p { font-size: 0.85rem; line-height: 1.9; }
+      .about-bg { background-size: cover; background-position: center top; }
       .fixed-cta { display: flex; }
       .reservation, footer { padding-bottom: 72px; }
       .gift-cake-img { width: 140px; height: 140px; }
@@ -431,7 +431,7 @@
       .reservation-steps { gap: 14px; }
       .hero-text-wrap { max-width: 180px; }
       .ingredient-circle { width: 72px; height: 72px; }
-      .kodawari-grid { gap: 24px; }
+
       .shop-flag { width: 56px; }
     }
   </style>
@@ -534,36 +534,8 @@
   <!-- ========== KODAWARI ========== -->
   <section class="kodawari fade-in">
     <div class="section-inner">
-      <h2 class="section-title">
-        <svg class="deco-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <style>.s{fill:none;stroke:#C8956C;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}</style>
-          <path d="M60,100 C60,82 54,64 44,46" class="s"/><path d="M60,86 C50,76 36,70 38,58 C40,46 52,50 60,64" class="s"/><path d="M60,80 C70,70 84,64 82,52 C80,40 68,44 60,58" class="s"/><circle cx="44" cy="44" r="6" class="s"/><circle cx="60" cy="36" r="6" class="s"/><circle cx="76" cy="44" r="6" class="s"/>
-        </svg>
-        こだわり
-        <svg class="deco-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" style="transform:scaleX(-1);">
-          <style>.s2{fill:none;stroke:#C8956C;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}</style>
-          <path d="M60,100 C60,82 54,64 44,46" class="s2"/><path d="M60,86 C50,76 36,70 38,58 C40,46 52,50 60,64" class="s2"/><path d="M60,80 C70,70 84,64 82,52 C80,40 68,44 60,58" class="s2"/><circle cx="44" cy="44" r="6" class="s2"/><circle cx="60" cy="36" r="6" class="s2"/><circle cx="76" cy="44" r="6" class="s2"/>
-        </svg>
-      </h2>
-      <div class="kodawari-grid">
-        <div class="kodawari-card">
-          <div class="kodawari-icon">
-            <img src="image/files/10_leaf_berry.svg" alt="" />
-          </div>
-          <div class="kodawari-label">地元の<br />新鮮な食材</div>
-        </div>
-        <div class="kodawari-card">
-          <div class="kodawari-icon">
-            <img src="image/files/19_cream_swirl.svg" alt="" />
-          </div>
-          <div class="kodawari-label">無添加・<br />やさしい味わい</div>
-        </div>
-        <div class="kodawari-card">
-          <div class="kodawari-icon">
-            <img src="image/files/13_chiffon_cake.svg" alt="" />
-          </div>
-          <div class="kodawari-label">毎日手作りで<br />ひとつずつ</div>
-        </div>
+      <div class="kodawari-img-wrap">
+        <img src="images/Carefully selected.jpg" alt="こだわりの食材" class="kodawari-img" />
       </div>
     </div>
   </section>
@@ -583,7 +555,6 @@
             <path d="M60,14 L68,40 L96,40 L74,56 L82,82 L60,66 L38,82 L46,56 L24,40 L52,40 Z" class="ms2"/>
           </svg>
         </h2>
-        <a href="#menu" class="menu-link">メニュー一覧へ &#8594;</a>
       </div>
       <div class="menu-grid">
         <div class="menu-card">
@@ -628,11 +599,10 @@
           <h2>手土産や差し入れにも喜ばれています&#9825;</h2>
           <p>大切な方へのギフトにも。ご相談はお気軽にどうぞ。</p>
         </div>
-        <img class="gift-icon" src="images/icon_gift (1).png" alt="" />
       </div>
       <div class="gift-cakes">
         <img class="gift-cake-img" src="images/giftcake.jpg" alt="ギフト用シフォンケーキ" />
-        <img class="gift-cake-img" src="images/goodkake.png" alt="シフォンケーキ" />
+        <img class="gift-cake-img" src="images/gift.jpg" alt="シフォンケーキ" />
         <img class="gift-cake-img" src="images/tear&cake.jpg" alt="ティーとシフォンケーキ" />
       </div>
     </div>
